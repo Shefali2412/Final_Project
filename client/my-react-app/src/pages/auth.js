@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Auth = () => {
   return (
-    <div
-      className="auth
-  "
-    >
+    <div className="auth auth-page">
       <Login />
       <Register />
     </div>
@@ -20,11 +17,18 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Simple validation
+    if (!username || !password) {
+      setError("Username and password are required.");
+      return;
+    }
 
     try {
       const result = await axios.post("http://localhost:3001/auth/login", {
@@ -37,6 +41,7 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       console.error(error);
+      setError("Invalid username or password.");
     }
   };
 
@@ -44,25 +49,30 @@ const Login = () => {
     <div className="auth-container">
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
-        <div className="form-group">
+        {error && <p className="error-message">{error}</p>}
+        <div className={`form-group ${error ? "has-error" : ""}`}>
           <label htmlFor="username">Username:</label>
           <input
+            className={`form-control ${error ? "is-invalid" : ""}`}
             type="text"
             id="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className={`form-group ${error ? "has-error" : ""}`}>
           <label htmlFor="password">Password:</label>
           <input
+            className={`form-control ${error ? "is-invalid" : ""}`}
             type="password"
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="btn btn-dark" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );
@@ -71,9 +81,17 @@ const Login = () => {
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Simple validation
+    if (!username || !password) {
+      setError("Username and password are required.");
+      return;
+    }
+
     try {
       await axios.post("http://localhost:3001/auth/register", {
         username,
@@ -82,6 +100,7 @@ const Register = () => {
       alert("Registration Completed! Now login.");
     } catch (error) {
       console.error(error);
+      setError("Registration failed. Try again.");
     }
   };
 
@@ -89,25 +108,30 @@ const Register = () => {
     <div className="auth-container">
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
-        <div className="form-group">
+        {error && <p className="error-message">{error}</p>}
+        <div className={`form-group ${error ? "has-error" : ""}`}>
           <label htmlFor="username">Username:</label>
           <input
+            className={`form-control ${error ? "is-invalid" : ""}`}
             type="text"
             id="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className={`form-group ${error ? "has-error" : ""}`}>
           <label htmlFor="password">Password:</label>
           <input
+            className={`form-control ${error ? "is-invalid" : ""}`}
             type="password"
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">Register</button>
+        <button className="btn btn-dark" type="submit">
+          Register
+        </button>
       </form>
     </div>
   );

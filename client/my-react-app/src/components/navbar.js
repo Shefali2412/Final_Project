@@ -14,14 +14,37 @@ export const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/create-recipe">Create Recipe</Link>
-      <Link to="/saved-recipes">Saved Recipes</Link>
-      {!cookies.access_token ? (
-        <Link to="/auth">Login/Register</Link>
-      ) : (
-        <button onClick={logout}> Logout </button>
-      )}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a className="navbar-brand" href="/">
+          <img
+            src="/recipelogo.png"
+            width="10"
+            height="10"
+            className="d-inline-block align-top logo"
+            alt="Bootstrap"
+          />
+        </a>
+        <div className="collapse navbar-collapse" id="navbarColor01">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/create-recipe">Create Recipe</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/saved-recipes">Saved Recipes</Link>
+            </li>
+            <li className="nav-item">
+              {!cookies.access_token ? (
+                <Link to="/auth">Login/Register</Link>
+              ) : (
+                <button onClick={logout}>Logout</button>
+              )}
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import Header from "../components/header";
+import Footer from "../components/footer";
 
 export const Home = () => {
   return (
@@ -61,8 +62,7 @@ export const Home = () => {
           </p>
         </div>
       </section>
-
-      {/* Add similar sections for "How It Works," "Get Started," "Testimonials," etc. */}
+      <Footer />
     </div>
   );
 };
