@@ -113,19 +113,14 @@ h2 {
   margin-top: 0;
 }
 
+.recipe-image,
+.recipe-card {
+  height: 250px;
+}
+
 img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 10px;
-}
-
-img {
-  width: 400px;
-}
-
-p {
-  max-width: 400px;
-  font-size: 12px;
 }
 
 .logo {

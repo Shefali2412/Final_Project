@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-
+import { useGetUserID } from "../hooks/useGetUserID";
 export const Navbar = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
+
+  const userID = useGetUserID();
 
   const logout = () => {
     setCookies("access_token", "");
@@ -29,12 +31,17 @@ export const Navbar = () => {
             <li className="nav-item">
               <Link to="/">Home</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/create-recipe">Create Recipe</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/saved-recipes">Saved Recipes</Link>
-            </li>
+
+            {userID && (
+              <>
+                <li className="nav-item">
+                  <Link to="/create-recipe">Create Recipe</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/saved-recipes">Saved Recipes</Link>
+                </li>
+              </>
+            )}
             <li className="nav-item">
               {!cookies.access_token ? (
                 <Link to="/auth">Login/Register</Link>
