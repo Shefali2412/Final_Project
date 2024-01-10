@@ -30,7 +30,10 @@ export const Home = () => {
     };
 
     fetchRecipes();
-    fetchSavedRecipes();
+    if (userID) {
+      // call only for logged in user
+      fetchSavedRecipes();
+    }
   }, []);
 
   const saveRecipe = async (recipeID) => {
