@@ -67,6 +67,9 @@ export const Home = () => {
       <div className="my-4">
         <CarouselComponent />
       </div>
+      <div className="my-4">
+        <h2 className=" text-style">Recipes list</h2>
+      </div>
       {recipes.map((recipe) => (
         <div key={recipe._id} className="card mb-3 recipe-card">
           <div className="row g-0">
