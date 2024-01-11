@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="app-header">
       <img
-        src={process.env.PUBLIC_URL + "/recipelogo.png"}
+        src={process.env.PUBLIC_URL + "/logo.png"}
         alt="RecipeHub Logo"
         className="logo"
       />

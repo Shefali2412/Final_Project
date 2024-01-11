@@ -19,15 +19,18 @@ export const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="/">
           <img
-            src="/recipelogo.png"
+            src="/logo.png"
             width="10"
             height="10"
             className="d-inline-block align-top logo"
             alt="Bootstrap"
           />
         </a>
-        <div className="collapse navbar-collapse" id="navbarColor01">
-          <ul className="navbar-nav mr-auto">
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarColor01"
+        >
+          <ul className="navbar-nav">
             <li className="nav-item">
               <Link to="/">Home</Link>
             </li>
@@ -42,6 +45,8 @@ export const Navbar = () => {
                 </li>
               </>
             )}
+          </ul>
+          <ul className="navbar-nav">
             <li className="nav-item">
               {!cookies.access_token ? (
                 <Link to="/auth">Login/Register</Link>

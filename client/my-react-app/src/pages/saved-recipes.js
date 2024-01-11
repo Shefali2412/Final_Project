@@ -26,12 +26,20 @@ export const SavedRecipes = () => {
       {savedRecipes.length > 0 ? (
         <ul>
           {savedRecipes.map((recipe) => (
-            <li key={recipe._id}>
-              <div>
-                <h2>{recipe.name}</h2>
+            <li
+              className="card d-flex "
+              style={{ marginRight: "10px" }}
+              key={recipe._id}
+            >
+              <div className="card-body">
+                <h2 className="card-title">{recipe.name}</h2>
               </div>
-              <p>{recipe.description}</p>
-              <img src={recipe.imageUrl} alt={recipe.name} />
+              <p className="card-text">{recipe.description}</p>
+              <img
+                className="card-img-top"
+                src={recipe.imageUrl}
+                alt={recipe.name}
+              />
               <p>Cooking Time: {recipe.cookingTime} minutes</p>
             </li>
           ))}

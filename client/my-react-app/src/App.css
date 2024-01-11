@@ -81,22 +81,6 @@ a {
   font-size: 25px;
 }
 
-.create-recipe {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  width: 400px;
-}
-.create-recipe form {
-  display: flex;
-  flex-direction: column;
-}
 ul {
   list-style: none;
   padding: 0;
@@ -124,5 +108,62 @@ img {
 }
 
 .logo {
-  width: 145px;
+  width: 80px;
+}
+
+.text-style {
+  font-family: cursive;
+}
+/*shefali's style*/
+.container {
+  color: white;
+  background-image: url("../public/img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-recipe-form {
+  max-width: 600px;
+  width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #ffffff8c;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(235, 230, 230, 0.5);
+}
+
+.create {
+  text-align: center;
+  color: rgb(5, 5, 5) !important;
+  font-family: ui-sans-serif;
+  font-size: 50px !important;
+  font-weight: bolder !important;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+  color: black;
+}
+
+.btn-secondary {
+  margin-top: 1rem;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.ingredients-label {
+  margin-right: 20px;
+}
+
+.app-footer {
+  width: 100%;
+}
+
+.carousel-inner,
+.carousel-image {
+  height: 300px;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useGetUserID } from "../hooks/useGetUserID";
+import { CarouselComponent } from "../components/gallery";
 import axios from "axios";
 
 export const Home = () => {
@@ -52,6 +53,20 @@ export const Home = () => {
 
   return (
     <div className="m-4">
+      <section className="introduction-section text-center">
+        <h2 className=" text-style">
+          Simple recipes made for real, actual, everyday life.
+        </h2>
+        <h4>Welcome to RecipeHub</h4>
+
+        <p>
+          Your ultimate destination for culinary inspiration and organization.
+          Discover, create, and savor delightful recipes in one central hub.
+        </p>
+      </section>
+      <div className="my-4">
+        <CarouselComponent />
+      </div>
       {recipes.map((recipe) => (
         <div key={recipe._id} className="card mb-3 recipe-card">
           <div className="row g-0">
@@ -72,7 +87,7 @@ export const Home = () => {
                   </small>
                 </p>
                 <button
-                  className="btn btn-primary"
+                  className={`btn btn-dark ${userID ? "" : "d-none"}`}
                   onClick={() => saveRecipe(recipe._id)}
                   disabled={isRecipeSaved(recipe._id)}
                 >
