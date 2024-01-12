@@ -167,3 +167,15 @@ img {
 .carousel-image {
   height: 400px;
 }
+
+/* Navbar.css */
+
+.navbar-nav .nav-link:hover {
+  color: yellow; 
+}
+
+.navbar-nav .nav-link-button:hover {
+  background-color: yellow; 
+  color: black; 
+}
+

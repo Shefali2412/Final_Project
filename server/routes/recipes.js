@@ -6,14 +6,19 @@ import { verifyToken } from "./users.js";
 
 const router = express.Router();
 
+
+// Get all recipes sorted by creation time (newest first)
 router.get("/", async (req, res) => {
   try {
-    const response = await RecipeModel.find({});
-    res.json(response);
+    const results = await RecipeModel.find().sort({ createdAt: -1 }).exec();
+    console.log(results); // Add this line for logging
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json(err);
+    console.error(err); // Log the error
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 // Create a new recipe
 router.post("/", verifyToken, async (req, res) => {
@@ -46,6 +51,7 @@ router.post("/", verifyToken, async (req, res) => {
 });
 
 // Get a recipe by ID
+
 router.get("/:recipeId", async (req, res) => {
   try {
     const result = await RecipeModel.findById(req.params.recipeId);

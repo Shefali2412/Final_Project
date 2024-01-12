@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useGetUserID } from "../hooks/useGetUserID";
+
+
 export const Navbar = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
@@ -32,16 +34,16 @@ export const Navbar = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/">Home</Link>
+              <Link to="/" className="nav-link">Home</Link>
             </li>
 
             {userID && (
               <>
                 <li className="nav-item">
-                  <Link to="/create-recipe">Create Recipe</Link>
+                  <Link to="/create-recipe" className="nav-link">Create Recipe</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/saved-recipes">Saved Recipes</Link>
+                  <Link to="/saved-recipes" className="nav-link">Saved Recipes</Link>
                 </li>
               </>
             )}
@@ -49,9 +51,9 @@ export const Navbar = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               {!cookies.access_token ? (
-                <Link to="/auth">Login/Register</Link>
+                <Link to="/auth" className="nav-link">Login/Register</Link>
               ) : (
-                <button onClick={logout}>Logout</button>
+                <button onClick={logout} className="nav-link-button">Logout</button>
               )}
             </li>
           </ul>
@@ -60,3 +62,6 @@ export const Navbar = () => {
     </div>
   );
 };
+
+
+
